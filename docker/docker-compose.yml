@@ -1,0 +1,14 @@
+version: "3"
+services:
+  jupyter:
+    build:
+      context: ../
+      dockerfile: ./docker/jupyter/Dockerfile
+    environment:
+      - TZ=Asia/Tokyo
+    volumes:
+      - ../work:/home/work/
+    ports:
+      - 8888:8888
+    command: jupyter-lab --ip 0.0.0.0 --allow-root -b localhost
+    tty: true
